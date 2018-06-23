@@ -1,0 +1,38 @@
+Ques10:Create a Dynamic Array Data Structure?
+Ans10:
+package dynamicarray;
+import java.util.*;
+import java.lang.reflect.Field;
+
+public class DynamicArray extends ArrayList {
+    ArrayList newlist;
+    int size;
+    DynamicArray (int Size)throws Exception
+    {
+        this.size=size;
+        newlist=new ArrayList(Size);
+        newlist.add("swapan");
+        System.out.println(newlist);
+        System.out.println(getcapacity (newlist));
+        newlist.ensureCapacity(2*10);
+        System.out.println(getcapacity(newlist));
+    }
+    static int getcapacity(ArrayList a1)throws Exception
+    {
+        Field field=ArrayList.class.getDeclaredField("elementData");
+        field.setAccessible(true);
+        int capacity=((Object[])field.get(a1)).length;
+return capacity;
+    }
+}
+    class Main
+    {
+    public static void main(String args[])throws Exception 
+    {
+    DynamicArray object=new DynamicArray(10);
+    }
+    }
+
+
+    
+    
